@@ -300,7 +300,7 @@ html:not(.js) .nojs-note a { text-decoration: underline; text-underline-offset: 
   gap: 16px; height: var(--hdr);
 }
 .brand { display: flex; align-items: center; flex: 0 0 auto; }
-.brand img { height: 26px; }
+.brand img { height: 30px; }
 
 .nav { align-items: center; }
 .nav__list { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 26px); list-style: none; }
