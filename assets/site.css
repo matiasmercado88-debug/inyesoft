@@ -69,9 +69,9 @@
   --md-line-2: #163149;
   --md-line-3: #173247;
   --md-line-4: #163046;
-  --md-blue:   #13bde5;   /* celeste del logo MD */
-  --md-blue-2: #4dd0ee;
-  --md-blue-3: #8ae4f7;
+  --md-blue:   #0095db;   /* azul del logo MD oficial */
+  --md-blue-2: #33afef;   /* tinte claro: hover / texto de realce */
+  --md-blue-3: #7fd2f8;   /* tinte más claro: etiquetas sutiles */
   --md-ink:    #04141f;   /* tinta oscura para texto sobre el celeste brillante */
   --md-fg:     #eef4ff;
   --md-fg-2:   #e7f0ff;
@@ -80,10 +80,10 @@
   --md-fg-5:   #93a9c2;
   --md-dim:    #7496bc;  /* ≥4,5:1 sobre md-bg */
   --md-dim-2:  #6a8cb2;
-  --md-grid:   rgba(19, 189, 229, .05);
+  --md-grid:   rgba(0, 149, 219, .05);
 
-  --gutter: clamp(18px, 4vw, 76px);
-  --shell:  1760px;
+  --gutter: clamp(18px, 4vw, 76px);   /* padding lateral del contenedor (referencia: el nav) */
+  --content-max: 1760px;              /* ancho máx. del contenido (referencia: el nav) */
 
   --hdr: 64px;
   --ease: cubic-bezier(.22, 1, .36, 1);
@@ -165,19 +165,18 @@ h1[tabindex='-1']:focus-visible { outline: none; }
 .skip-link:focus { top: 12px; color: var(--bg); }
 
 /* --------------------------------------------------------------- layout -- */
-.wrap {
-  max-width: var(--shell);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
+/* Contenedor ÚNICO. Nav, hero, footer y TODAS las secciones lo usan, así el borde
+   izquierdo del contenido coincide siempre con el del logo del nav (misma X en todo
+   breakpoint). No cappear el ancho por-ruta: eso desalinea. Si una sección necesita
+   contenido más angosto, usar un max-width INTERNO alineado a la izquierda, nunca el
+   .container. Los fondos full-bleed van en el elemento externo (.sect / .mux-sect). */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  box-sizing: border-box;
 }
-
-/* El shell ancho (1760) llena bien el landing y las grillas del home, pero estira
-   de más las tablas/formularios. Las rutas de contenido (todo menos el home) se
-   acotan a un ancho de lectura y quedan densas como el original. El header y el
-   footer (fuera de .route) siguen anchos. `.route` distingue el div de ruta del
-   <html>, que también lleva data-route para el theming. */
-.route:not([data-route="home"]) .wrap { max-width: 1320px; }
 
 .sect { border-bottom: 1px solid var(--line); }
 .sect--alt { background: var(--bg-alt); }
@@ -301,6 +300,10 @@ html:not(.js) .nojs-note a { text-decoration: underline; text-underline-offset: 
 }
 .brand { display: flex; align-items: center; flex: 0 0 auto; }
 .brand img { height: 30px; }
+/* en la ruta MD Repro, el logo del nav pasa a ser el de MDREPRO */
+.brand__md { display: none; }
+[data-route='mdrepro'] .brand__inye { display: none; }
+[data-route='mdrepro'] .brand__md { display: block; height: 22px; }
 
 .nav { align-items: center; }
 .nav__list { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 26px); list-style: none; }
@@ -385,8 +388,7 @@ html:not(.js) .nojs-note a { text-decoration: underline; text-underline-offset: 
 [data-route='mdrepro'] .burger { border-color: var(--md-line); }
 [data-route='mdrepro'] .burger span:last-child { background: var(--md-blue-2); }
 [data-route='mdrepro'] .burger[aria-expanded='true'] span:nth-child(3) { background: var(--fg); }
-[data-route='mdrepro'] .btn-shop { border-color: var(--md-blue); color: var(--md-blue-2); }
-[data-route='mdrepro'] .btn-shop:hover { background: var(--md-blue); color: var(--md-ink); }
+[data-route='mdrepro'] .btn-shop { display: none; } /* en Reprogramación no va el botón de tienda */
 [data-route='mdrepro'] .menu,
 [data-route='mdrepro'] .menu .navlink { border-color: var(--md-line-2); }
 
@@ -464,7 +466,7 @@ html:not(.js) .nojs-note a { text-decoration: underline; text-underline-offset: 
 .btn--ghost:hover { border-color: var(--yellow); color: var(--yellow); }
 
 .btn--blue { background: var(--md-blue); color: var(--md-ink); padding: 0 30px; }
-.btn--blue:hover { background: var(--md-blue-2); color: var(--md-ink); box-shadow: 0 6px 22px -10px rgba(19,189,229,.5); }
+.btn--blue:hover { background: var(--md-blue-2); color: var(--md-ink); box-shadow: 0 6px 22px -10px rgba(0,149,219,.5); }
 
 .btn--wa {
   gap: 8px; padding: 0 22px;
@@ -607,7 +609,7 @@ html:not(.js) .nojs-note a { text-decoration: underline; text-underline-offset: 
   box-shadow: 0 0 8px var(--glow); animation: live-breathe 2.4s ease-in-out infinite; }
 @keyframes live-breathe { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
 .md .live, .dyno__delta .live { color: var(--md-blue-2); }
-.md .live i, .dyno__delta .live i { background: var(--md-blue-2); box-shadow: 0 0 8px rgba(19,189,229,.5); }
+.md .live i, .dyno__delta .live i { background: var(--md-blue-2); box-shadow: 0 0 8px rgba(0,149,219,.5); }
 
 /* dispositivo de instrumento (hero) */
 .device {
@@ -869,7 +871,7 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 /* ------------------------------------------------------------ MD Repro --- */
 .md { background: var(--md-bg); border-bottom: 1px solid var(--md-line-3); }
 .md__brand { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px 20px; padding-top: clamp(22px, 2.6vw, 36px); }
-.md__brand img { height: clamp(52px, 7vw, 92px); }
+.md__brand img { height: clamp(104px, 13vw, 196px); }
 .md__where { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--md-blue-3); }
 
 /* marca de la sección Repuestos (espeja a .md__brand) */
@@ -894,7 +896,7 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 .md .spec__v { color: var(--md-fg-2); }
 
 /* dyno como readout doble antes→después */
-.dyno-card { box-shadow: inset 0 1px 40px -22px rgba(19,189,229,.5); }
+.dyno-card { box-shadow: inset 0 1px 40px -22px rgba(0,149,219,.5); }
 .dyno { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--md-line-2); }
 .dyno > div { padding: 14px 12px; position: relative; }
 .dyno__before { border-right: 1px solid var(--md-line-2); }
@@ -903,7 +905,7 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 .dyno__after dt { color: var(--md-blue-2); }
 .dyno__hp { font-size: clamp(16px, 1.8vw, 20px); color: var(--md-fg-4); margin: 8px 0 0; display: block; }
 .dyno__nm { font-size: 13px; color: var(--md-fg-5); margin: 2px 0 0; display: block; }
-.dyno__after .dyno__hp { font-weight: 700; font-size: clamp(18px, 2vw, 24px); color: var(--md-blue-2); text-shadow: 0 0 14px rgba(19,189,229,.35); }
+.dyno__after .dyno__hp { font-weight: 700; font-size: clamp(18px, 2vw, 24px); color: var(--md-blue-2); text-shadow: 0 0 14px rgba(0,149,219,.35); }
 .dyno__after .dyno__nm { font-weight: 600; color: var(--md-blue-2); }
 .dyno__delta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px;
   padding: 11px 12px; border-top: 1px solid var(--md-line-2); }
@@ -1054,7 +1056,7 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 .site-footer__inner { padding-top: clamp(32px, 4vw, 52px); padding-bottom: max(clamp(24px, 3vw, 36px), env(safe-area-inset-bottom)); }
 .footer-brand { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
 .footer-brand img:first-of-type { height: 24px; }
-.footer-brand img:last-of-type { height: 32px; }
+.footer-brand img:last-of-type { height: 30px; } /* MDfoot lleva velocímetro: más alto para igualar el cuerpo de letra INYE */
 .footer-brand .rule { width: 1px; height: 24px; background: var(--line); }
 /* en pantallas chicas los dos logos no entran en una línea: se apilan y se oculta la regla */
 @media (max-width: 600px) { .footer-brand .rule { display: none; } }
@@ -1138,7 +1140,7 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 }
 .hero-sect .edge-rail { z-index: 3; }
 
-.hero-sect .wrap.hero {
+.hero-sect .container.hero {
   position: relative; z-index: 2; width: 100%;
   padding-top: 0;
   padding-block: clamp(36px, 6vh, 72px);
@@ -1197,4 +1199,186 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 @media (max-width: 420px) {
   .hero__inst-row { flex-direction: column; }
   .hero__inst .gauge { border-right: none; border-bottom: 1px solid var(--line); }
+}
+
+/* ==========================================================================
+   HOME = una sola pantalla · selector de 3 marcas (cards expansibles)
+   Interacción 100% CSS (hover + :focus-within). El azul MD queda contenido
+   dentro de la card 03 (--_acc por marca). Fallback no-JS = idéntico.
+   ========================================================================== */
+.mux-sect { background: var(--bg); }
+
+.mux-wrap {
+  /* -1px por el borde inferior del header sticky (64px + 1px) */
+  min-height: calc(100vh - var(--hdr) - 1px);
+  min-height: calc(100svh - var(--hdr) - 1px);
+  display: flex; flex-direction: column;
+  gap: clamp(14px, 2.2vh, 28px);
+  padding-top: clamp(18px, 3vh, 38px);
+  padding-bottom: clamp(12px, 1.8vh, 20px);
+}
+
+/* --- fila intro --- */
+.mux-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 20px 32px; flex-wrap: wrap;
+}
+.mux-head__label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--fg-7);
+}
+.mux-head__title {
+  font-family: var(--sans); font-weight: 800;
+  font-size: clamp(20px, 2.2vw, 34px); line-height: 1.04; letter-spacing: -.01em;
+  text-transform: uppercase; text-align: right; color: var(--fg-hi); margin: 0;
+}
+
+/* --- selector --- */
+.mux {
+  flex: 1 1 auto; display: flex; min-height: min(62vh, 560px);
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--line-mid);
+  border-bottom: 1px solid var(--line-hair);
+}
+.mux__item {
+  flex: 1 1 0; min-width: 0; display: flex;
+  transition: flex-grow .6s cubic-bezier(.22, .61, .36, 1);
+}
+.mux__item + .mux__item { border-left: 1px solid var(--line); }
+
+/* estado por defecto: Electrónica (primera) expandida */
+.mux__item:first-child { flex-grow: 2.5; }
+/* al entrar al bloque, todas se comprimen... */
+.mux:hover .mux__item,
+.mux:focus-within .mux__item { flex-grow: 1; }
+/* ...menos la que tiene cursor/foco (especificidad > que la de compresión) */
+.mux:hover .mux__item:hover,
+.mux:focus-within .mux__item:focus-within { flex-grow: 2.5; }
+
+/* --- card --- */
+.mux__card--ele, .mux__card--rep { --_acc: var(--yellow); }
+.mux__card--md { --_acc: var(--md-blue); }
+
+.mux__card {
+  position: relative; overflow: hidden;
+  flex: 1 1 auto; width: 100%; min-width: 0;
+  display: flex; flex-direction: column;
+  padding: clamp(18px, 1.9vw, 32px) clamp(16px, 1.7vw, 30px);
+  text-decoration: none; color: var(--fg); background: var(--bg);
+  transition: background .5s ease;
+}
+.mux__item:hover .mux__card,
+.mux__item:focus-within .mux__card { background: var(--bg-hover); }
+
+/* glow celeste contenido SOLO en la card MD */
+.mux__card--md::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
+  background: radial-gradient(130% 100% at 50% 100%, rgba(0, 149, 219, .18), transparent 72%);
+  opacity: .5; pointer-events: none; transition: opacity .5s ease;
+}
+.mux__item:hover .mux__card--md::after,
+.mux__item:focus-within .mux__card--md::after { opacity: 1; }
+
+/* barra de acento superior en la card activa */
+.mux__card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--_acc); transform: scaleX(0); transform-origin: left center;
+  transition: transform .6s cubic-bezier(.22, .61, .36, 1);
+}
+.mux__item:first-child .mux__card::before { transform: scaleX(1); }
+.mux:hover .mux__card::before,
+.mux:focus-within .mux__card::before { transform: scaleX(0); }
+.mux__item:hover .mux__card::before,
+.mux__item:focus-within .mux__card::before { transform: scaleX(1); }
+
+.mux__top { min-height: 1.2em; }
+.mux__tag {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+  color: var(--fg-6); white-space: nowrap;
+}
+
+.mux__logo {
+  flex: 1 1 auto; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(18px, 3vw, 46px) 0;
+}
+.mux__logo img {
+  display: block; width: auto; height: auto;
+  max-width: min(100%, 440px); max-height: clamp(60px, 12vh, 124px);
+  object-fit: contain;
+  transition: max-height .6s cubic-bezier(.22, .61, .36, 1);
+}
+/* al posarse en MDREPRO, su logo se agranda aún más que el resto */
+.mux__item:hover .mux__card--md .mux__logo img,
+.mux__item:focus-within .mux__card--md .mux__logo img { max-height: clamp(104px, 17vh, 182px); }
+
+.mux__foot { margin-top: auto; }
+.mux__title {
+  display: block; font-family: var(--sans); font-weight: 800;
+  font-size: clamp(17px, 1.5vw, 26px); line-height: 1.06; letter-spacing: -.01em;
+  text-transform: uppercase; color: var(--fg-hi);
+}
+.mux__reveal {
+  display: block; margin-top: 12px; max-width: 34ch;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .5s ease .04s, transform .5s cubic-bezier(.22, .61, .36, 1) .04s;
+}
+.mux__item:first-child .mux__reveal { opacity: 1; transform: none; }
+.mux:hover .mux__reveal,
+.mux:focus-within .mux__reveal { opacity: 0; transform: translateY(8px); }
+.mux__item:hover .mux__reveal,
+.mux__item:focus-within .mux__reveal { opacity: 1; transform: none; }
+
+.mux__desc { display: block; font-size: 14px; line-height: 1.5; color: var(--fg-4); }
+.mux__cta {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--_acc);
+}
+.mux__arrow { transition: transform .4s cubic-bezier(.22, .61, .36, 1); }
+.mux__item:hover .mux__arrow,
+.mux__item:focus-within .mux__arrow { transform: translateX(3px); }
+
+.mux__card:focus-visible { outline: 2px solid var(--_acc); outline-offset: -5px; }
+
+/* --- strip inferior --- */
+.mux-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px 20px; flex-wrap: wrap; margin: 0;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-7);
+}
+.mux-strip__live { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-6); }
+.mux-strip__dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--yellow);
+  box-shadow: 0 0 0 3px var(--yellow-wash), 0 0 10px var(--glow);
+}
+.mux-strip__end { color: var(--fg-6); }
+@media (min-width: 861px) { .mux-strip { padding-right: 76px; } } /* despeja el WA flotante */
+
+/* --- mobile: sin hover, todo apilado y visible --- */
+@media (max-width: 860px) {
+  .mux-wrap { min-height: 0; gap: 18px; }
+  .mux-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .mux-head__title { text-align: left; font-size: clamp(22px, 7vw, 30px); }
+
+  .mux { flex-direction: column; min-height: 0; border: none; }
+  .mux__item { flex: 0 0 auto; }
+  .mux__item:first-child { flex-grow: 0; }
+  .mux__item + .mux__item { border-left: none; border-top: 1px solid var(--line); }
+
+  .mux__card { flex-direction: column; padding: 22px 2px; background: var(--bg) !important; }
+  .mux__card--md::after { height: 100%; opacity: .5; }
+  .mux__logo { justify-content: flex-start; padding: 12px 0; }
+  .mux__logo img { max-width: 62%; max-height: 52px; }
+  .mux__reveal { opacity: 1 !important; transform: none !important; max-width: none; }
+
+  /* acento: tick corto a la izquierda, siempre visible */
+  .mux__card::before { transform: scaleX(1) !important; right: auto; width: 44px; }
+  .mux-strip { justify-content: flex-start; padding-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mux__item, .mux__card, .mux__card::before, .mux__card--md::after,
+  .mux__reveal, .mux__arrow { transition: none; }
 }

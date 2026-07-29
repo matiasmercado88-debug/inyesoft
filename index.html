@@ -26,9 +26,10 @@
 
 <!-- ============================== NAV ============================== -->
 <header class="site-header">
-  <div class="wrap site-header__bar">
-    <a class="brand" href="#/" aria-label="INYESOFT — inicio">
-      <img src="assets/inyesoft-w.svg" alt="INYESOFT" width="1563" height="247">
+  <div class="container site-header__bar">
+    <a class="brand" href="#/" aria-label="Ir al inicio">
+      <img class="brand__inye" src="assets/inyesoft-w.svg" alt="INYESOFT" width="1563" height="247">
+      <img class="brand__md" src="assets/logos/MDLARGOsin-01.svg" alt="MDREPRO" width="618" height="90">
     </a>
 
     <nav class="nav" aria-label="Principal">
@@ -55,7 +56,7 @@
     </div>
   </div>
 
-  <nav class="wrap menu" id="menu" aria-label="Principal (móvil)" hidden>
+  <nav class="container menu" id="menu" aria-label="Principal (móvil)" hidden>
     <a class="navlink" href="#/">Inicio</a>
     <a class="navlink" href="#/electronica">Electrónica</a>
     <a class="navlink" href="#/repuestos">Repuestos · Tienda</a>
@@ -71,168 +72,75 @@
 <!-- ============================== HOME ============================== -->
 <div class="route" data-route="home" data-title="INYESOFT · Electrónica automotriz">
 
-  <section class="sect sect--rel hero-sect">
-    <div class="edge-rail" aria-hidden="true">
-      <span data-sheet="01">01</span><span data-sheet="02">02</span><span data-sheet="03">03</span><span data-sheet="04">04</span><span data-sheet="05">05</span><span data-sheet="06">06</span><span data-sheet="07">07</span>
-    </div>
 
-    <!-- hero a sangre: la toma de banco ocupa todo el ancho; el texto va encima -->
-    <picture class="hero__media">
-      <source media="(max-width: 767px)" srcset="assets/img/hero-mobile.webp" width="1131" height="1391">
-      <img src="assets/img/hero-desktop.webp"
-           alt="Módulo ECU automotriz abierto sobre el banco de prueba, con una punta de sonda de osciloscopio apoyada en sus pines"
-           width="1692" height="930" fetchpriority="high" decoding="async">
-    </picture>
-    <div class="hero__scrim" aria-hidden="true"></div>
+  <!-- ===== SELECTOR DE 3 MARCAS — el index es una sola pantalla ===== -->
+  <section class="mux-sect" aria-labelledby="home-h1">
+    <div class="container mux-wrap">
 
-    <div class="wrap hero">
-      <p class="sheet-bar"><span>INYESOFT · ELECTRÓNICA AUTOMOTRIZ</span><b>HOME / CANAL 01</b></p>
-
-      <div class="hero__copy">
-        <p class="fig">READ 01 — SERVICIO INTEGRAL</p>
-        <h1 class="h-display">Reparación, repuestos y reprogramación de electrónica automotriz</h1>
-        <p class="lede">Reparamos módulos, vendemos los componentes que necesitás y reprogramamos vehículos. Todo se prueba en banco antes de la entrega.</p>
-
-        <p class="claim">
-          <span class="claim__dot" aria-hidden="true"></span>
-          <span class="claim__txt">PROBADO EN BANCO ANTES DE ENTREGAR</span>
-        </p>
-
-        <div class="btn-row">
-          <a class="btn btn--solid" href="#/electronica">Ver qué hacemos</a>
-          <a class="btn btn--ghost" href="#/repuestos">Ir a repuestos</a>
-        </div>
-
-        <!-- tarjeta-instrumento: la lectura de banco del módulo de la foto -->
-        <div class="hero__inst device" data-instrument aria-label="Lectura de banco en vivo">
-          <div class="device__head">
-            <span class="live"><i aria-hidden="true"></i>EN MEDICIÓN</span>
-            <span class="device__ch">CANAL 01 · BANCO</span>
-          </div>
-          <div class="hero__inst-row">
-            <div class="gauge" data-gauge="0.82" style="--gauge:.82" role="img" aria-label="Verificación en banco: aprobado">
-              <svg class="gauge__svg" viewBox="0 0 120 78" aria-hidden="true" focusable="false">
-                <path class="gauge__track" d="M12 72 A48 48 0 0 1 108 72" fill="none" stroke-width="7" stroke-linecap="round"/>
-                <path class="gauge__fill" d="M12 72 A48 48 0 0 1 108 72" fill="none" stroke-width="7" stroke-linecap="round"/>
-                <line class="gauge__needle" x1="60" y1="72" x2="60" y2="30" stroke-width="2.5" stroke-linecap="round"/>
-                <circle class="gauge__hub" cx="60" cy="72" r="4"/>
-              </svg>
-              <b class="gauge__val"><span data-count="100" data-suffix="%">100%</span></b>
-              <span class="gauge__cap">VERIFICADO</span>
-            </div>
-            <dl class="readout-strip">
-              <div><dt>LOCAL</dt><dd>DEL VISO</dd></div>
-              <div><dt>CANAL</dt><dd>B2B · TIENDA</dd></div>
-              <div><dt>REV</dt><dd class="is-rev">01 / 26</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sect">
-    <div class="wrap sect__inner sect__inner--tight">
-      <div class="sec-head mb-a">
-        <h2 class="h-sec">¿Por dónde empezás?</h2>
-        <span class="fig-tag">READ 02</span>
+      <div class="mux-head">
+        <p class="mux-head__label">SELECCIONÁ EL SERVICIO QUE NECESITÁS</p>
+        <h1 class="mux-head__title" id="home-h1">Tres especialidades.<br>Una misma exigencia técnica.</h1>
       </div>
 
-      <div class="deriv">
-        <a class="deriv__item field-link" href="#/electronica">
-          <span class="deriv__n">01</span>
-          <span class="deriv__body"><b>Reparar</b><span>Tu vehículo tiene una falla electrónica</span></span>
-          <span class="deriv__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="deriv__item field-link" href="#/repuestos">
-          <span class="deriv__n">02</span>
-          <span class="deriv__body"><b>Comprar un módulo</b><span>Ya sabés qué módulo necesitás</span></span>
-          <span class="deriv__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="deriv__item field-link" href="#/mdrepro">
-          <span class="deriv__n">03</span>
-          <span class="deriv__body"><b>Potenciar</b><span>Querés más rendimiento</span></span>
-          <span class="deriv__arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="deriv__item field-link" href="#/contacto">
-          <span class="deriv__n">04</span>
-          <span class="deriv__body"><b>No sé qué necesito</b><span>Contanos el síntoma</span></span>
-          <span class="deriv__arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
+      <ul class="mux">
+        <!-- 01 · ELECTRÓNICA -->
+        <li class="mux__item">
+          <a class="mux__card mux__card--ele" href="#/electronica" aria-label="Electrónica automotriz: reparación, diagnóstico y programación de módulos">
+            <span class="mux__top"><span class="mux__tag">01 / REPARACIÓN &amp; DIAGNÓSTICO</span></span>
+            <span class="mux__logo">
+              <img src="assets/logos/INYEMD-24.svg" alt="INYESOFT Electrónica Automotriz" width="1574" height="385" fetchpriority="high" decoding="async">
+            </span>
+            <span class="mux__foot">
+              <span class="mux__title">Electrónica automotriz</span>
+              <span class="mux__reveal">
+                <span class="mux__desc">Diagnóstico, reparación y programación de módulos. Trabajo técnico para talleres y particulares.</span>
+                <span class="mux__cta">Conocer INYESOFT<span class="mux__arrow" aria-hidden="true">→</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
 
-  <section class="sect sect--alt" aria-label="Respaldo">
-    <ul class="wrap respaldo sect__inner sect__inner--flush">
-      <li><span class="respaldo__item"><b><span data-count="15" data-prefix="+" data-suffix=" AÑOS">+15 AÑOS</span></b><span>en electrónica automotriz</span></span></li>
-      <li><a class="respaldo__item field-link" href="#/electronica"><b>BANCO</b><span>cada trabajo probado antes de entregar</span></a></li>
-      <li><a class="respaldo__item field-link" href="#/electronica"><b>NACIONAL</b><span>recibimos módulos por correo desde todo el país</span></a></li>
-      <li><a class="respaldo__item field-link" href="#/legales"><b>ENVÍOS</b><span>condiciones de envío y entrega</span></a></li>
-    </ul>
-  </section>
+        <!-- 02 · REPUESTOS -->
+        <li class="mux__item">
+          <a class="mux__card mux__card--rep" href="#/repuestos" aria-label="Repuestos: venta de módulos, computadoras, kits de arranque e instrumentales">
+            <span class="mux__top"><span class="mux__tag">02 / VENTA DE COMPONENTES</span></span>
+            <span class="mux__logo">
+              <img src="assets/logos/INYEMD-13.svg" alt="INYESOFT Repuestos" width="1675" height="365" decoding="async">
+            </span>
+            <span class="mux__foot">
+              <span class="mux__title">Repuestos</span>
+              <span class="mux__reveal">
+                <span class="mux__desc">Módulos, computadoras, kits de arranque e instrumentales, nuevos y recuperados.</span>
+                <span class="mux__cta">Ir a la tienda<span class="mux__arrow" aria-hidden="true">→</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
 
-  <section class="sect">
-    <div class="wrap sect__inner sect__inner--wide">
-      <div class="sec-head mb-b">
-        <h2 class="h-sec">Una marca, tres divisiones</h2>
-        <span class="fig-tag">READ 03</span>
-      </div>
-      <p class="intro">Inyesoft repara y programa. De la misma casa cuelgan la tienda de repuestos y MD Repro. Mismo criterio técnico, mismo banco de prueba.</p>
+        <!-- 03 · MDREPRO -->
+        <li class="mux__item">
+          <a class="mux__card mux__card--md" href="#/mdrepro" aria-label="Reprogramación MDREPRO: potenciación y calibración electrónica con medición real">
+            <span class="mux__top"><span class="mux__tag">03 / PERFORMANCE CALIBRADA</span></span>
+            <span class="mux__logo">
+              <img src="assets/logos/MDLARGOC.svg" alt="MDREPRO — Reprogramación automotriz" width="473" height="150" decoding="async">
+            </span>
+            <span class="mux__foot">
+              <span class="mux__title">Reprogramación</span>
+              <span class="mux__reveal">
+                <span class="mux__desc">Potenciación y calibración electrónica con criterio técnico y medición real.</span>
+                <span class="mux__cta">Conocer MDREPRO<span class="mux__arrow" aria-hidden="true">→</span></span>
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
 
-      <div class="col3 divisions">
-        <div class="division">
-          <p class="division__tag">01 · SERVICIO<span>DEL VISO</span></p>
-          <img class="ph-img ph--card" src="assets/img/div-modulos-home.webp" alt="Taller de electrónica automotriz de Inyesoft: estación de soldadura y módulos en el banco, Del Viso" width="1672" height="941" loading="lazy" decoding="async">
-          <h3>Inyesoft</h3>
-          <p>Reparación y programación de módulos. Resolvemos los casos que muchos talleres prefieren derivar.</p>
-          <a class="division__cta field-link" href="#/electronica">VER SERVICIOS<span aria-hidden="true">→</span></a>
-        </div>
-        <div class="division">
-          <p class="division__tag">02 · TIENDA<span>DEL VISO</span></p>
-          <img class="ph-img ph--card" src="assets/img/div-tienda-home.webp" alt="Módulos verificados en stock sobre el mostrador y en estantería, listos para envío" width="1672" height="941" loading="lazy" decoding="async">
-          <h3>Repuestos</h3>
-          <p>ECU, BSI, kits de arranque y más. Probados y listos para instalar, con envío a todo el país.</p>
-          <a class="division__cta division__cta--solid" href="#/repuestos">IR A LA TIENDA<span aria-hidden="true">→</span></a>
-        </div>
-        <div class="division">
-          <p class="division__tag">03 · PERFORMANCE<span>ESCOBAR</span></p>
-          <img class="ph-img ph--card" src="assets/img/div-rodillo-home.webp" alt="Rodillo inercial de MD Repro en Escobar, con una pickup sobre el banco de potencia" width="1672" height="941" loading="lazy" decoding="async">
-          <h3>MD Repro</h3>
-          <p>Reprogramación para autos, camionetas, camiones, agro, motos y náutica. Medido en banco.</p>
-          <a class="division__cta field-link" href="#/mdrepro">CONOCER MD REPRO<span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="mux-strip">
+        <span class="mux-strip__live"><span class="mux-strip__dot" aria-hidden="true"></span>PROBADO EN BANCO ANTES DE ENTREGAR</span>
+        <span class="mux-strip__mid">INYESOFT / 2026</span>
+        <span class="mux-strip__end">ENVÍOS A TODO EL PAÍS</span>
+      </p>
 
-  <section class="sect">
-    <div class="wrap sect__inner sect__inner--wide2">
-      <div class="sec-head mb-a">
-        <h2 class="h-sec">Destacados de tienda</h2>
-        <a class="link-mono" href="#/repuestos">VER CATÁLOGO →</a>
-      </div>
-
-      <div class="col3 featured">
-        <a class="featured__item field-link" href="#/repuestos?ref=01">
-          <img class="ph-img ph--thumb" src="assets/img/prod-ecu-01.webp" alt="ECU motor Bosch EDC17C10" width="1254" height="1254" loading="lazy" decoding="async">
-          <span class="featured__ref">0281 014 789</span>
-          <b>ECU Bosch EDC17C10</b>
-          <span class="featured__price num">$385.000</span>
-        </a>
-        <a class="featured__item field-link" href="#/repuestos?ref=02">
-          <img class="ph-img ph--thumb" src="assets/img/prod-abs-02.webp" alt="Módulo ABS Bosch 9.0" width="1254" height="1254" loading="lazy" decoding="async">
-          <span class="featured__ref">ABS/ESP · BOSCH 9.0</span>
-          <b>Módulo ABS Bosch 9.0</b>
-          <span class="featured__price featured__price--ask">Consultar</span>
-        </a>
-        <a class="featured__item field-link" href="#/repuestos?ref=03">
-          <img class="ph-img ph--thumb" src="assets/img/prod-kit-03.webp" alt="Kit de arranque + BCM" width="1254" height="1254" loading="lazy" decoding="async">
-          <span class="featured__ref">BCM + KIT</span>
-          <b>Kit de arranque + BCM</b>
-          <span class="featured__price featured__price--ask">Consultar</span>
-        </a>
-      </div>
     </div>
   </section>
 </div>
@@ -241,11 +149,11 @@
 <div class="route" data-route="electronica" data-title="Electrónica · Reparación y programación de módulos — INYESOFT">
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head">
+    <div class="container sect__inner sect__inner--head">
       <p class="sheet-bar"><span>ELECTRÓNICA · REPARACIÓN B2B</span><b>/SERVICIOS/ · CANAL 02</b></p>
 
       <div class="shop-brand">
-        <img src="assets/logos/INYEMD-24.svg" alt="INYESOFT Electrónica automotriz" width="2546" height="506">
+        <img src="assets/logos/INYEMD-24.svg" alt="INYESOFT Electrónica automotriz" width="1574" height="385">
         <span class="shop-brand__where">DEL VISO · TALLER</span>
       </div>
 
@@ -264,7 +172,7 @@
   </section>
 
   <section class="sect">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Servicios</h2>
         <span class="fig-tag">READ 02</span>
@@ -282,7 +190,7 @@
   </section>
 
   <section class="sect">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Cómo trabajamos</h2>
         <span class="fig-tag">READ 03</span>
@@ -321,7 +229,7 @@
 
   <!-- envío de módulos por correo -->
   <section class="sect" id="envio-modulos">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Enviar un módulo por correo</h2>
         <span class="fig-tag">READ 04</span>
@@ -395,11 +303,11 @@
 <div class="route" data-route="repuestos" data-title="Repuestos · Catálogo de módulos — INYESOFT">
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head3">
+    <div class="container sect__inner sect__inner--head3">
       <p class="sheet-bar"><span>REPUESTOS · TIENDA ONLINE</span><b>/REPUESTOS/ · CANAL 03</b></p>
 
       <div class="shop-brand">
-        <img src="assets/logos/INYEMD-13.svg" alt="INYESOFT Repuestos" width="2440" height="594">
+        <img src="assets/logos/INYEMD-13.svg" alt="INYESOFT Repuestos" width="1675" height="365">
         <span class="shop-brand__where">DEL VISO · TIENDA</span>
       </div>
 
@@ -439,7 +347,7 @@
   </section>
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head">
+    <div class="container sect__inner sect__inner--head">
       <h2 class="visually-hidden">Listado de módulos</h2>
       <table class="catalog" id="catalog">
         <caption class="visually-hidden">Catálogo de módulos disponibles. Cada fila abre su ficha técnica.</caption>
@@ -546,11 +454,11 @@
 <div class="route" data-route="mdrepro" data-title="MD Repro · Reprogramación y potenciación — INYESOFT">
 
   <section class="md sect--grid">
-    <div class="wrap sect__inner sect__inner--head2">
+    <div class="container sect__inner sect__inner--head2">
       <p class="sheet-bar"><span>MD REPRO · REPROGRAMACIÓN</span><b>/MDREPRO/ · CANAL 04</b></p>
 
       <div class="md__brand">
-        <img src="assets/logos/mdlogoCOMPLETOBLANCO.svg" alt="MD REPRO — Reprogramación automotriz" width="1490" height="549">
+        <img src="assets/logos/MD1.svg" alt="MDREPRO — Reprogramación automotriz" width="257" height="194">
         <span class="md__where">ESCOBAR · RODILLO INERCIAL</span>
       </div>
 
@@ -589,7 +497,7 @@
   </section>
 
   <section class="md">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <h2 class="md__label">SERVICIOS POR SEGMENTO</h2>
       <div class="col3 grid-cells">
         <div class="cell"><b>Livianos</b><span>Autos y camionetas · más respuesta y mejor consumo.</span></div>
@@ -616,7 +524,7 @@
 <div class="route" data-route="nosotros" data-title="Nosotros · Especialistas en electrónica automotriz — INYESOFT">
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head2">
+    <div class="container sect__inner sect__inner--head2">
       <p class="sheet-bar"><span>NOSOTROS</span><b>/NOSOTROS/ · CANAL 05</b></p>
       <div class="prose">
         <p class="fig">READ 01 — QUIÉNES SOMOS</p>
@@ -627,7 +535,7 @@
   </section>
 
   <section class="sect">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Cómo se relacionan las divisiones</h2>
         <span class="fig-tag">READ 02</span>
@@ -657,7 +565,7 @@
 <div class="route" data-route="contacto" data-title="Contacto — INYESOFT">
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head2">
+    <div class="container sect__inner sect__inner--head2">
       <p class="sheet-bar"><span>CONTACTO</span><b>/CONTACTO/ · CANAL 06</b></p>
 
       <h1 class="h-display h-display--sm mt-d">Escribinos</h1>
@@ -786,7 +694,7 @@
 <div class="route" data-route="legales" data-title="Legales, pagos y envíos — INYESOFT">
 
   <section class="sect">
-    <div class="wrap sect__inner sect__inner--head2">
+    <div class="container sect__inner sect__inner--head2">
       <p class="sheet-bar"><span>TIENDA · LEGALES</span><b>/LEGALES/ · CANAL 07</b></p>
 
       <div class="prose">
@@ -806,7 +714,7 @@
   </section>
 
   <section class="sect" id="s-pagos" tabindex="-1">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Medios de pago y envíos</h2>
         <span class="fig-tag">01</span>
@@ -832,7 +740,7 @@
   </section>
 
   <section class="sect" id="s-cambios" tabindex="-1">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Cambios y devoluciones</h2>
         <span class="fig-tag">02</span>
@@ -857,7 +765,7 @@
   </section>
 
   <section class="sect" id="s-terminos" tabindex="-1">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Términos y condiciones</h2>
         <span class="fig-tag">03</span>
@@ -890,7 +798,7 @@
   </section>
 
   <section class="sect" id="s-defensa" tabindex="-1">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Defensa del Consumidor</h2>
         <span class="fig-tag">04</span>
@@ -915,7 +823,7 @@
   </section>
 
   <section class="sect" id="s-arrepentimiento" tabindex="-1">
-    <div class="wrap sect__inner">
+    <div class="container sect__inner">
       <div class="sec-head mb-c">
         <h2 class="h-sec h-sec--sm">Botón de arrepentimiento</h2>
         <span class="fig-tag">05</span>
@@ -997,13 +905,13 @@
 
 <!-- ============================== FOOTER ============================== -->
 <footer class="site-footer">
-  <div class="wrap site-footer__inner">
+  <div class="container site-footer__inner">
     <div class="col3 gap-lg">
       <div>
         <div class="footer-brand">
           <img src="assets/inyesoft-w.svg" alt="INYESOFT" width="1563" height="247">
           <span class="rule" aria-hidden="true"></span>
-          <img src="assets/logos/mdlogo.svg" alt="MD REPRO" width="2352" height="293">
+          <img src="assets/logos/MDfoot-01.svg" alt="MDREPRO" width="472" height="130">
         </div>
         <p>Electrónica automotriz. Reparación, venta de módulos y reprogramación. Del Viso y Escobar, con envíos a todo el país.</p>
       </div>
