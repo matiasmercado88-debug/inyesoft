@@ -877,6 +877,10 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 /* marca de la sección Repuestos (espeja a .md__brand) */
 .shop-brand { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px 20px; padding-top: clamp(22px, 2.6vw, 36px); }
 .shop-brand img { height: clamp(60px, 8.2vw, 108px); }
+/* La cabecera de Repuestos comparte esta barra con la de Electrónica (que usa
+   INYEMD-24). Acá el alto se fija directo, así que el lockup apilado necesita
+   el mismo 1,4235 para que ambos wordmarks midan igual. */
+[data-route='repuestos'] .shop-brand img { height: clamp(85px, 11.7vw, 154px); }
 .shop-brand__where { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--yellow); }
 .shop-brand + .shop-title,
 .shop-brand + .prose { padding-top: clamp(12px, 1.6vw, 18px); }
@@ -1312,6 +1316,13 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
 .mux__item:hover .mux__card--md .mux__logo img,
 .mux__item:focus-within .mux__card--md .mux__logo img { max-height: clamp(104px, 17vh, 182px); }
 
+/* Repuestos usa un lockup apilado (INYESOFT + "Repuestos" manuscrita debajo):
+   su wordmark ocupa el 33,96% del alto del archivo contra el 48,34% del de
+   Electrónica. A igual ancho los wordmarks coinciden, pero al expandirse la
+   tarjeta manda el max-height y el de Repuestos quedaba 28% más chico.
+   Se compensa con 48,34/33,96 = 1,4235 sobre el clamp base. */
+.mux__card--rep .mux__logo img { max-height: clamp(85px, 17.1vh, 177px); }
+
 .mux__foot { margin-top: auto; }
 .mux__title {
   display: block; font-family: var(--sans); font-weight: 800;
@@ -1371,6 +1382,8 @@ a.respaldo__item:hover b { color: var(--yellow-hi); }
   .mux__card--md::after { height: 100%; opacity: .5; }
   .mux__logo { justify-content: flex-start; padding: 12px 0; }
   .mux__logo img { max-width: 62%; max-height: 52px; }
+  /* mismo factor 1,4235 del lockup apilado de Repuestos */
+  .mux__card--rep .mux__logo img { max-height: 74px; }
   .mux__reveal { opacity: 1 !important; transform: none !important; max-width: none; }
 
   /* acento: tick corto a la izquierda, siempre visible */
